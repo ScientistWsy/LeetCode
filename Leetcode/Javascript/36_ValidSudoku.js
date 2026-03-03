@@ -21,16 +21,16 @@ var isValidSudoku = function(board) {
 
     for (i = 0; i < 9; i++) {
         for (j = 0; j < 9; j++) {
-            if(board[i][j] != '.') {
-                if (row.has(board[i][j])) return false;
-                row.set(board[i][j]);
+            if(board[i][j] == '.') continue;
 
-                if (column.has(j+board[i][j])) return false;
-                column.set(j+board[i][j]);
+            if (row.has(board[i][j])) return false;
+            row.set(board[i][j]);
 
-                if (box.has(pos[i] + pos[j] + board[i][j])) return false;
-                box.set(pos[i] + pos[j] + board[i][j]);
-            } 
+            if (column.has(j+board[i][j])) return false;
+            column.set(j+board[i][j]);
+
+            if (box.has(pos[i] + pos[j] + board[i][j])) return false;
+            box.set(pos[i] + pos[j] + board[i][j]);
         }
         row.clear();
     }
